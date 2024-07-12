@@ -1,6 +1,3 @@
-// shared_library/vars/commonGeneric.groovy
-package org.generic
-
 import org.generic.File1
 
 def call() {
