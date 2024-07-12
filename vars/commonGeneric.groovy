@@ -1,6 +1,6 @@
-import org.generic.File1
-import org.generic.File2
-import org.generic.File3
+import op.generic.File1
+import op.generic.File2
+import op.generic.File3
 
 def call() {
     File1.printFile1()
