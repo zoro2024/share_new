@@ -1,4 +1,3 @@
-// File1.groovy
 package org.generic
 
 class File1 {
