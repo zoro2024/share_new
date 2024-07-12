@@ -1,4 +1,4 @@
-@Library('shared_library') _
+@Library('shared_new') _
 
 pipeline {
     agent any
