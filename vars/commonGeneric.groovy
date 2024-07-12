@@ -6,7 +6,7 @@ def call() {
     echo message
 }
 
-def call1() {
+def step() {
     def message = File2.getFile2Message()
     echo message
 }
