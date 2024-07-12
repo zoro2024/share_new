@@ -1,7 +1,7 @@
 package org.generic
 
 class File2 {
-    static void printFile2() {
-        println "This is File2"
+    static String getFile1Message() {
+        return "This is File2"
     }
 }
