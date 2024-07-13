@@ -1,10 +1,11 @@
-package org.generic
+package org.class
 
-def call(String url, String creds, String branch) {
-    stage('Clone') {
-        script {
-            echo "Cloning repo ${url} from branch ${branch} using creds ${creds}"
-            git branch: "${branch}", credentialsId: "${creds}", url: "${url}"
-        }
+class Checkout {
+    static void execute(script) {
+        script.checkout([
+            $class: 'GitSCM',
+            branches: [[name: script.params.GIT_BRANCH]],
+            userRemoteConfigs: [[url: script.params.GIT_URL]]
+        ])
     }
 }
