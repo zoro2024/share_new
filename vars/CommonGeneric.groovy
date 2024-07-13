@@ -1,3 +1,5 @@
+// vars/CommonGeneric.groovy
+
 import org.generic.Checkout
 import org.generic.Gitleaks
 import org.generic.TrivyInstaller
