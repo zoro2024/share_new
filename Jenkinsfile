@@ -4,7 +4,7 @@ pipeline {
     agent any
 
     environment {
-        GIT_URL = 'https://github.com/OT-MICROSERVICES/attendance-api.git'
+        URL = 'https://github.com/OT-MICROSERVICES/attendance-api.git'
         BRANCH = 'main'
         CREDS = 'github-token'
         REPOURL = 'https://github.com/OT-MICROSERVICES/attendance-api.git'
