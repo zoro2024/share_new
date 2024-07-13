@@ -1,6 +1,3 @@
-// shared-new/vars/CommonGeneric.groovy
-package vars
-
 import org.generic.Checkout
 import org.generic.Gitleaks
 import org.generic.TrivyInstaller
