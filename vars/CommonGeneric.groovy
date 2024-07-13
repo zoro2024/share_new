@@ -3,17 +3,13 @@ import org.generic.Gitleaks
 import org.generic.TrivyInstaller
 
 def checkoutRepo(String url, String creds, String branch) {
-    Checkout checkout = new Checkout()
-    checkout(url, creds, branch)
+    new Checkout().call(url, creds, branch)
 }
 
 def runGitleaks() {
-    Gitleaks gitleaks = new Gitleaks()
-    gitleaks()
+    new Gitleaks().call()
 }
 
 def installAndRunTrivy(String repoUrl = '') {
-    TrivyInstaller trivy = new TrivyInstaller()
-    trivy.installTrivy(repoUrl)
+    new TrivyInstaller().installTrivy(repoUrl)
 }
-
