@@ -1,3 +1,6 @@
+// shared-new/vars/CommonGeneric.groovy
+package vars
+
 import org.generic.Checkout
 import org.generic.Gitleaks
 import org.generic.TrivyInstaller
@@ -13,19 +16,25 @@ def call(String repoUrl, String credsId, String branch) {
         stages {
             stage('Checkout') {
                 steps {
-                    checkout(repoUrl, credsId, branch)
+                    script {
+                        checkout.clone(repoUrl, credsId, branch)
+                    }
                 }
             }
             
             stage('Run Gitleaks') {
                 steps {
-                    gitleaks()
+                    script {
+                        gitleaks.run()
+                    }
                 }
             }
             
             stage('Install Trivy and Scan') {
                 steps {
-                    trivyInstaller.installTrivy(repoUrl)
+                    script {
+                        trivyInstaller.installTrivy(repoUrl)
+                    }
                 }
             }
         }
