@@ -1,21 +1,17 @@
-@Library('shared_library') _
+@Library('shared-new') _
 
-pipeline {
-    agent any
+node {
+    stage('Run Common Generic') {
+        // Define the variables
+        def repoUrl = 'https://github.com/OT-MICROSERVICES/attendance-api.git'
+        def creds = 'github-token'
+        def branch = 'main'
+        def trivyRepoUrl = 'https://github.com/OT-MICROSERVICES/attendance-api.git'
 
-    parameters {
-        string(name: 'REPO_URL', defaultValue: 'https://github.com/OT-MICROSERVICES/attendance-api.git', description: 'Repository URL')
-        string(name: 'CREDS_ID', defaultValue: 'github-token', description: 'Credentials ID')
-        string(name: 'BRANCH', defaultValue: 'main', description: 'Branch to checkout')
-    }
+        // Create an instance of Commongeneric class
+        def commonGeneric = new org.common.commongeneric()
 
-    stages {
-        stage('Run Pipeline') {
-            steps {
-                script {
-                    commonGeneric.call(REPO_URL, CREDS_ID, BRANCH)
-                }
-            }
-        }
+        // Execute runAll method with parameters
+        commonGeneric.runAll(repoUrl, creds, branch, trivyRepoUrl)
     }
 }
