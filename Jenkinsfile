@@ -14,7 +14,7 @@ pipeline {
                     def trivyRepoUrl = 'https://github.com/OT-MICROSERVICES/attendance-api.git'
 
                     // Create an instance of commonGeneric class
-                    def commonGeneric = new org.common.commonGeneric()
+                    def commonGeneric = new commonGeneric()
 
                     // Execute runAll method with parameters
                     commonGeneric.runAll(repoUrl, creds, branch, trivyRepoUrl)
