@@ -1,5 +1,7 @@
 @Library('shared-new') _
 
+import commonGeneric
+
 node {
     stage('Run Common Generic') {
         // Define the variables
@@ -8,8 +10,8 @@ node {
         def branch = 'main'
         def trivyRepoUrl = 'https://github.com/OT-MICROSERVICES/attendance-api.git'
 
-        // Create an instance of Commongeneric class
-        def commonGeneric = new commongeneric()
+        // Create an instance of commonGeneric class
+        def commonGeneric = new commonGeneric()
 
         // Execute runAll method with parameters
         commonGeneric.runAll(repoUrl, creds, branch, trivyRepoUrl)
