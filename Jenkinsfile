@@ -13,14 +13,12 @@ pipeline {
                     def branch = 'main'
                     def trivyRepoUrl = 'https://github.com/OT-MICROSERVICES/attendance-api.git'
 
-                    // Import the commonGeneric function from shared library
-                    def commonGeneric = new commonGeneric()
-
-                    // Execute runAll method with parameters
+                    // Call the commonGeneric function directly
                     commonGeneric.runAll(repoUrl, creds, branch, trivyRepoUrl)
                 }
             }
         }
     }
 }
+
 
