@@ -14,7 +14,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 script {
-                    commongeneric.callCheckout(GIT_URL, BRANCH, CREDS)
+                    commongeneric.callCheckout(env.GIT_URL, env.BRANCH, env.CREDS)
                 }
             }
         }
@@ -28,7 +28,7 @@ pipeline {
         stage('License Scanning') {
             steps {
                 script {
-                    commongeneric.callTrivyInstaller(REPOURL)
+                    commongeneric.callTrivyInstaller(env.REPOURL)
                 }
             }
         }
