@@ -1,31 +1,32 @@
-package org.common
-
 import org.generic.Checkout
 import org.generic.Gitleaks
 import org.generic.TrivyInstaller
 
-class commongeneric {
-    def runAll(String url, String creds, String branch, String repoUrl) {
-        def checkout = new Checkout()
-        def gitleaks = new Gitleaks()
-        def trivyInstaller = new TrivyInstaller()
+def call(String repoUrl, String credsId, String branch) {
+    Checkout checkout = new Checkout()
+    Gitleaks gitleaks = new Gitleaks()
+    TrivyInstaller trivyInstaller = new TrivyInstaller()
 
-        node {
-            try {
-                stage('Checkout') {
-                    checkout.clone(url, creds, branch)
+    pipeline {
+        agent any
+        
+        stages {
+            stage('Checkout') {
+                steps {
+                    checkout(repoUrl, credsId, branch)
                 }
-
-                stage('Run Gitleaks') {
-                    gitleaks.run()
+            }
+            
+            stage('Run Gitleaks') {
+                steps {
+                    gitleaks()
                 }
-
-                stage('Install Trivy and Scan') {
+            }
+            
+            stage('Install Trivy and Scan') {
+                steps {
                     trivyInstaller.installTrivy(repoUrl)
                 }
-            } catch (Exception e) {
-                currentBuild.result = 'FAILURE'
-                throw e
             }
         }
     }
