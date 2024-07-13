@@ -6,19 +6,16 @@ pipeline {
     stages {
         stage('Run Common Generic') {
             steps {
-                script {
-                    // Define the variables
-                    def repoUrl = 'https://github.com/OT-MICROSERVICES/attendance-api.git'
-                    def creds = 'github-token'
-                    def branch = 'main'
-                    def trivyRepoUrl = 'https://github.com/OT-MICROSERVICES/attendance-api.git'
+                // Define variables
+                def repoUrl = 'https://github.com/OT-MICROSERVICES/attendance-api.git'
+                def creds = 'github-token'
+                def branch = 'main'
+                def trivyRepoUrl = 'https://github.com/OT-MICROSERVICES/attendance-api.git'
 
-                    // Call the commonGeneric function directly
-                    commonGeneric.runAll(repoUrl, creds, branch, trivyRepoUrl)
-                }
+                // Call the function from shared library
+                commonGeneric.runAll(repoUrl, creds, branch, trivyRepoUrl)
             }
         }
     }
 }
-
 
