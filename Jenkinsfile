@@ -9,7 +9,7 @@ node {
         def trivyRepoUrl = 'https://github.com/OT-MICROSERVICES/attendance-api.git'
 
         // Create an instance of Commongeneric class
-        def commonGeneric = commongeneric()
+        def commonGeneric = new commongeneric()
 
         // Execute runAll method with parameters
         commonGeneric.runAll(repoUrl, creds, branch, trivyRepoUrl)
