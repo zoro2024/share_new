@@ -2,14 +2,14 @@ import org.generic.Checkout
 import org.generic.Gitleaks
 import org.generic.TrivyInstaller
 
-def callCheckout() {
-    new Checkout().call()
+def callCheckout(url, branch, creds) {
+    new Checkout().call(url, branch, creds)
 }
 
 def callGitleaks() {
     new Gitleaks().call()
 }
 
-def callTrivyInstaller() {
-    new TrivyInstaller().call()
+def callTrivyInstaller(repoUrl) {
+    new TrivyInstaller().call(repoUrl)
 }

@@ -1,13 +1,20 @@
-@Library('shared_library') _
+@Library('shared_new') _
 
 pipeline {
     agent any
-    
+
+    environment {
+        URL = 'https://github.com/OT-MICROSERVICES/attendance-api.git'
+        BRANCH = 'main'
+        CREDS = 'github-token'
+        REPOURL = 'https://github.com/OT-MICROSERVICES/attendance-api.git'
+    }
+
     stages {
         stage('Checkout') {
             steps {
                 script {
-                    commongeneric.callCheckout()
+                    commongeneric.callCheckout(URL, BRANCH, CREDS)
                 }
             }
         }
@@ -21,9 +28,9 @@ pipeline {
         stage('License Scanning') {
             steps {
                 script {
-                    commongeneric.callTrivyInstaller()
+                    commongeneric.callTrivyInstaller(REPOURL)
                 }
             }
-        }        
+        }
     }
 }
