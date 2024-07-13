@@ -4,7 +4,7 @@ pipeline {
     agent any
 
     environment {
-        URL = 'https://github.com/OT-MICROSERVICES/attendance-api.git'
+        REPO_URL = 'https://github.com/OT-MICROSERVICES/attendance-api.git'
         BRANCH = 'main'
         CREDS = 'github-token'
         REPOURL = 'https://github.com/OT-MICROSERVICES/attendance-api.git'
@@ -14,7 +14,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 script {
-                    commongeneric.callCheckout(env.GIT_URL, env.BRANCH, env.CREDS)
+                    commongeneric.callCheckout(REPO_URL, BRANCH, CREDS)
                 }
             }
         }
@@ -28,7 +28,7 @@ pipeline {
         stage('License Scanning') {
             steps {
                 script {
-                    commongeneric.callTrivyInstaller(env.REPOURL)
+                    commongeneric.callTrivyInstaller(REPOURL)
                 }
             }
         }
