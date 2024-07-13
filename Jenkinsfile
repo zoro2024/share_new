@@ -2,17 +2,25 @@
 
 pipeline {
     agent any
-
     stages {
-        stage('Run Common Generic') {
+        stage('Checkout') {
             steps {
                 script {
-                    def repoUrl = 'https://github.com/OT-MICROSERVICES/attendance-api.git'
-                    def creds = 'github-token'
-                    def branch = 'main'
-
-                    // Call the function from shared library
-                    CommonGeneric(repoUrl, creds, branch)
+                    CommonGeneric.checkoutRepo('https://github.com/OT-MICROSERVICES/attendance-api.git', 'github-token', 'main')
+                }
+            }
+        }
+        stage('Run Gitleaks') {
+            steps {
+                script {
+                    CommonGeneric.runGitleaks()
+                }
+            }
+        }
+        stage('Install and Run Trivy') {
+            steps {
+                script {
+                    CommonGeneric.installAndRunTrivy('https://github.com/OT-MICROSERVICES/attendance-api.git')
                 }
             }
         }
