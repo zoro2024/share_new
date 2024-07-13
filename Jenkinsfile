@@ -4,7 +4,7 @@ pipeline {
     agent any
 
     environment {
-        URL = 'https://github.com/OT-MICROSERVICES/attendance-api.git'
+        GIT_URL = 'https://github.com/OT-MICROSERVICES/attendance-api.git'
         BRANCH = 'main'
         CREDS = 'github-token'
         REPOURL = 'https://github.com/OT-MICROSERVICES/attendance-api.git'
@@ -14,7 +14,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 script {
-                    commongeneric.callCheckout(URL, BRANCH, CREDS)
+                    commongeneric.callCheckout(GIT_URL, BRANCH, CREDS)
                 }
             }
         }
