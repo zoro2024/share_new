@@ -1,15 +1,29 @@
-// shared_library/Jenkinsfile
-@Library('shared_new') _
+@Library('shared_library') _
 
 pipeline {
     agent any
+    
     stages {
-        stage('Call Common Generic') {
+        stage('Checkout') {
             steps {
                 script {
-                    commonGeneric()
+                    commongeneric.callCheckout()
                 }
             }
         }
+        stage('Cred scanning') {
+            steps {
+                script {
+                    commongeneric.callGitleaks()
+                }
+            }
+        }
+        stage('License Scanning') {
+            steps {
+                script {
+                    commongeneric.callTrivyInstaller()
+                }
+            }
+        }        
     }
 }
