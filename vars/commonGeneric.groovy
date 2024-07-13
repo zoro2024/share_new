@@ -3,7 +3,7 @@ import org.generic.Gitleaks
 import org.generic.TrivyInstaller
 
 def callCheckout(url, branch, creds) {
-    new Checkout().call(url, branch, creds)
+    new Checkout().call(url, creds, branch)
 }
 
 def callGitleaks() {
