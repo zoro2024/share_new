@@ -1,4 +1,4 @@
-// vars/CommonGeneric.groovy
+// shared-new/vars/CommonGeneric.groovy
 
 import org.generic.Checkout
 import org.generic.Gitleaks
