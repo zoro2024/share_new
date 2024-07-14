@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        PACKER_TEMPLATE = 'template.pkr.hcl'
+        PACKER_TEMPLATE = 'packer.pkr.hcl'
     }
 
     stages {
