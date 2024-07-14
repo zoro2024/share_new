@@ -11,12 +11,17 @@ variable "aws_region" {
   default = "us-east-1"
 }
 
+variable "ami_name" {
+  description = "Name of the AMI to be created"
+  default     = "packer-template"
+}
+
 source "amazon-ebs" "example" {
   region          = var.aws_region
   source_ami      = "ami-04a81a99f5ec58529"
   instance_type   = "t2.micro"
   ssh_username    = "ubuntu"
-  ami_name        = "packer-template"
+  ami_name        = var.ami_name
 }
 
 build {
@@ -29,4 +34,3 @@ build {
     ]
   }
 }
-
