@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+
+    parameters {
+        string(name: 'AMI_NAME', defaultValue: 'packer-template', description: 'Name of the AMI to be created')
+    }
+
+    environment {
+        PACKER_TEMPLATE = 'template.pkr.hcl'
+    }
+
+    stages {
+        stage('Build AMI') {
+            steps {
+                script {
+                    sh """
+                    packer init ${env.PACKER_TEMPLATE}
+                    packer build -var 'ami_name=${params.AMI_NAME}' ${env.PACKER_TEMPLATE}
+                    """
+                }
+            }
+        }
+    }
+}
