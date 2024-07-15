@@ -16,7 +16,6 @@
 
 import org.generic.Buildami
 
-def buildami(envVars, params) {
-    Buildami.build(this, envVars, params)
+def buildAmi(String packerTemplate, String amiName) {
+    new Buildami().call(packerTemplate, amiName)
 }
-
