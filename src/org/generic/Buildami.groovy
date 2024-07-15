@@ -1,10 +1,32 @@
 package org.generic
 
-def call(String packerFile) {
-    stage('Build ami') {
-      script {
-        sh "packer init ${env.PACKER_TEMPLATE}"
-        sh "packer build -var 'ami_name=${params.AMI_NAME}' ${env.PACKER_TEMPLATE}"
-      }    
+class BuildAmi {
+    static def build(pipelineContext) {
+        pipelineContext.pipeline {
+            agent any
+
+            parameters {
+                string(name: 'AMI_NAME', defaultValue: 'packer-template', description: 'Name of the AMI to be created')
+            }
+
+            environment {
+                PACKER_TEMPLATE = 'packer.pkr.hcl'
+                AWS_ACCESS_KEY_ID = pipelineContext.credentials('aws-access-key-id') // Assuming you have set these credentials in Jenkins
+                AWS_SECRET_ACCESS_KEY = pipelineContext.credentials('aws-secret-access-key') // Assuming you have set these credentials in Jenkins
+            }
+
+            stages {
+                stage('Build AMI') {
+                    steps {
+                        script {
+                            sh """
+                            packer init ${env.PACKER_TEMPLATE}
+                            packer build -var 'ami_name=${params.AMI_NAME}' ${env.PACKER_TEMPLATE}
+                            """
+                        }
+                    }
+                }
+            }
+        }
     }
 }
