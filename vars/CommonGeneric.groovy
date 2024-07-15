@@ -16,6 +16,6 @@
 
 import org.generic.Buildami
 
-def buildAmi(String packerTemplate, String amiName) {
+def buildami(String packerTemplate, String amiName) {
     new Buildami().call(packerTemplate, amiName)
 }
