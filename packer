@@ -1,3 +1,7 @@
 @Library('shared-new')
 
-generic.buildami()
+node {
+    stage('build ami') {
+        generic.buildami()
+    }
+}
