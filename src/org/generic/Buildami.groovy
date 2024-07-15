@@ -1,8 +1,8 @@
 package org.generic
 
-def call(String packerTemplate, String amiName) {
+def call() {
     sh """
-    packer init ${packerTemplate}
-    packer build -var 'ami_name=${amiName}' ${packerTemplate}
+    packer init packer.pkr.hcl
+    packer build packer.pkr.hcl
     """
 }
