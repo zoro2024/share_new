@@ -14,7 +14,7 @@
 //     new TrivyInstaller().installTrivy(repoUrl)
 // }
 
-import static vars org.generic.Buildami
+import static vars.org.generic.Buildami
 
 def buildami(String packerTemplate, String amiName) {
     new Buildami().call(packerTemplate, amiName)
