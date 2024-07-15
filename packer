@@ -1,7 +1,12 @@
-@Library('shared-new')
+@Library('shared-library-new') _  // Replace 'shared-library-name' with the actual name of your shared library
 
-node {
-    stage('build ami') {
-        generic.buildami()
-    }
-}
+generic(
+    [
+        PACKER_TEMPLATE: 'packer.pkr.hcl',
+        AWS_ACCESS_KEY_ID: credentials('aws-access-key-id'),  // Assuming you have set these credentials in Jenkins
+        AWS_SECRET_ACCESS_KEY: credentials('aws-secret-access-key')  // Assuming you have set these credentials in Jenkins
+    ],
+    [
+        AMI_NAME: 'packer-template'  // Default value for the parameter
+    ]
+)
