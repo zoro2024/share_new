@@ -1,0 +1,3 @@
+@Library('shared-new')
+
+generic.buildami()
