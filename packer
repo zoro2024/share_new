@@ -1,4 +1,4 @@
-@Library('shared-library-new') _  // Replace 'shared-library-name' with the actual name of your shared library
+@Library('shared-new') _  // Replace 'shared-library-name' with the actual name of your shared library
 
 generic(
     [
