@@ -16,6 +16,7 @@
 
 import org.generic.Buildami
 
-def buildami() {
-    Buildami.build(this)
+def buildami(envVars, params) {
+    Buildami.build(this, envVars, params)
 }
+
